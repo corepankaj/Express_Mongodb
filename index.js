@@ -6,9 +6,10 @@ const mongoose = require("mongoose");
 const app = express();
 const studentRoutes = require("./routes/students.routes");
 
+const PORT = process.env.PORT || 8000;
+const MONGO_URL = process.env.MONGO_URL;
 
-
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(MONGO_URL)
 .then(()=>{
     console.log("Connected to mongoDB");
 
@@ -24,6 +25,6 @@ app.use(express.json())
 
 app.use("/api/students",studentRoutes);
 
-app.listen(process.env.PORT,()=>{
+app.listen(PORT,()=>{
     console.log("Server runing on port no 80000");
 })
